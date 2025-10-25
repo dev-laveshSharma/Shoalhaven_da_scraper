@@ -1,1 +1,42 @@
-
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>DA Records</title>
+    <style>
+      body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; padding: 24px; }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border: 1px solid #ddd; padding: 8px; font-size: 13px; }
+      th { background: #f6f6f6; text-align: left; position: sticky; top: 0; }
+      tr:nth-child(even){ background: #fbfbfb; }
+      .wrap { max-width: 1600px; margin: auto; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>DA Records</h1>
+      {% if rows %}
+      <table>
+        <thead>
+          <tr>
+            {% for c in columns %}
+            <th>{{ c }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in rows %}
+          <tr>
+            {% for c in columns %}
+            <td>{{ r[c] }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No rows found.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
